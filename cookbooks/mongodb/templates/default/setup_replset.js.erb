@@ -1,0 +1,12 @@
+config = {_id: '<%=@mongo_replset%>', members: [
+<% @mongo_nodes.each.with_index(1) do |mongo_node, idx| -%>
+  {_id: <%=idx%>, host: '<%=mongo_node%>:<%=@mongo_port%>'},
+<% end -%>
+<% if @mongo_arbiter %>
+  {_id: 42, host: '<%= @mongo_arbiter %>:27017', arbiterOnly: true}
+<% end -%>
+  ]
+}
+
+rs.initiate(config);
+

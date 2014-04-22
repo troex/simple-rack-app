@@ -1,0 +1,6 @@
+include_recipe "timezone"
+include_recipe "seed_blocks"
+include_recipe "phantomjs"
+include_recipe "mongodb"
+include_recipe "delayed_job"
+include_recipe "nginx"
